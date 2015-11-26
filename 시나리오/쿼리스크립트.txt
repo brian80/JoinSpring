@@ -1,0 +1,77 @@
+
+---------------------------------------
+--  mariadb에 그대로 복사하여 붙여넣으세요 
+---------------------------------------
+
+drop table area;
+drop table customer;
+drop table hobby;
+drop table customer_hobby;
+
+
+
+--지역정보 테이블
+create table area(
+  area_id int primary key auto_increment 
+, area_name varchar(20)
+) default charset utf8;
+
+
+--고객 테이블
+create table customer(
+   customer_id int primary key auto_increment 
+ , customer_name varchar(20)
+ , phone varchar(13)
+ , gender varchar(8)
+ , area_id int 
+) default charset utf8;
+
+--취미정보 테이블
+create table hobby(
+   hobby_id int primary key auto_increment 
+ , hobby_name varchar(20)
+) default charset utf8;
+
+
+--고객의 취미현황 테이블
+create table  customer_hobby(
+  customer_hobby_id  int primary key auto_increment 
+ , customer_id int 
+ , hobby_id int
+);
+
+
+---------------------------------------
+--  DML 
+---------------------------------------
+-- 지역정보
+insert into area(area_name) values('서울');
+insert into area(area_name) values('경기');
+insert into area(area_name) values('충청도');
+insert into area(area_name) values('전라도');
+insert into area(area_name) values('경상도');
+insert into area(area_name) values('제주도');
+
+
+--고객 테이블
+insert into customer(customer_name, phone, gender,area_id) values('탁이주', '017-256-1245', '상남자',1);
+insert into customer(customer_name, phone, gender,area_id) values('황진영', '016-789-4568', '천상여자',1);
+insert into customer(customer_name, phone, gender,area_id) values('이재영', '011-784-3635', '상남자',4);
+insert into customer(customer_name, phone, gender,area_id) values('이세윤', '011-7878-9090', '상남자',3);
+insert into customer(customer_name, phone, gender,area_id) values('이창섭', '010-234-5678', '상남자',3);
+
+
+--취미정보 테이블
+insert into hobby(hobby_name) values('수영');
+insert into hobby(hobby_name) values('독서');
+insert into hobby(hobby_name) values('컴퓨터');
+insert into hobby(hobby_name) values('여행');
+
+
+--고객의 취미현황 테이블
+insert into customer_hobby(customer_id, hobby_id) values(2,1);
+insert into customer_hobby(customer_id, hobby_id) values(2,2);
+insert into customer_hobby(customer_id, hobby_id) values(2,3);
+insert into customer_hobby(customer_id, hobby_id) values(4,1);
+insert into customer_hobby(customer_id, hobby_id) values(4,4);
+
